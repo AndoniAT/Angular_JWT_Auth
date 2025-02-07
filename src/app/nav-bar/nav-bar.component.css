@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar {
+    @apply bg-slate-200 dark:bg-[#1b1b1f];
+  }
+  
+.navbar-buttons {
+   @apply bg-slate-300 dark:text-slate-800
+}
+  
+.navbar-buttons li {
+  @apply hover:scale-110
+}

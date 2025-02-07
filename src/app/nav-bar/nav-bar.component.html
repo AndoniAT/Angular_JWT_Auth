@@ -1,0 +1,50 @@
+<div class="fixed w-full top-0 z-50">
+    <nav class="navbar">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+            <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse w-fit">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                    Created by Andoni ALONSO TORT
+                </span>
+            </a>
+            <div *ngIf="false" class="flex items-center space-x-6 rtl:space-x-reverse">
+                <p (click)={signOut} class="text-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">
+                    Logout
+                </p>
+                <div class="hover:scale-110 cursor-pointer" (click)={goToProfileHandler}>
+                    <div class="flex items-center">
+                        <p>Username</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="true" class="flex items-center space-x-6 rtl:space-x-reverse">
+                <div>
+                    <a routerLink='/login' class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+                </div>
+                <div>
+                    <a routerLink='/createAccount' class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-buttons">
+        <div class="max-w-screen-xl px-4 py-3 mx-auto">
+            <div class="flex items-center">
+                <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                    <li>
+                        <a routerLink='/' class="hover:underline" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a routerLink='/about' class="hover:underline">About</a>
+                    </li>
+                    <li>
+                        <a routerLink='/contact' class="hover:underline">Contact</a>
+                    </li>
+                    <li *ngIf="isAdmin === true">
+                        <a routerLink='/admin' class="hover:underline">Admin Page</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
