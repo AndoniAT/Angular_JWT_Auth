@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AccesTokenDecodedType } from '../interfaces/auth';
+import { AccesTokenDecodedType } from '../../interfaces/auth';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

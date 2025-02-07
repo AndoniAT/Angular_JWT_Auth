@@ -7,3 +7,7 @@
     @apply bg-slate-200 text-slate-800 
     dark:bg-[#1b1b1f] dark:text-slate-200;
 }
+
+.body-container {
+    @apply mt-[10%]
+}
