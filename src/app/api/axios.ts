@@ -3,8 +3,9 @@
  */
 
 import axios from "axios";
+import { environment } from "../../environments/environment";
 
-const BACK_END_URL = "http://localhost:8000";
+const BACK_END_URL = environment.BACK_END_URL;
 
 export default axios.create( {
     baseURL: BACK_END_URL

@@ -33,7 +33,7 @@ export class LoginComponent {
       password: this.profileForm.value.password
     };
 
-    axios.post( "/api/auth/login", user, {
+    axios.post( "auth/login", user, {
       headers: { "Content-Type": "application/json" },
       withCredentials: true
     } )
