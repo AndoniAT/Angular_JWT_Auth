@@ -24,6 +24,14 @@ To init tailwind in project :
 
 See [tailwind documentation](https://v3.tailwindcss.com/docs/guides/angular) to see how to install tailwind with Angular.
 
+ 
+### Dependencies
+
+
+Other dependencies installed:
+
+- [ng-icons](https://ng-icons.github.io/ng-icons/#/)
+ 
 <hr/>
 
 ## Angular Project Details

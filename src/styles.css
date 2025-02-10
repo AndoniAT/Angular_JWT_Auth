@@ -11,3 +11,19 @@
 .body-container {
     @apply mt-[10%]
 }
+
+.container-form input.password {
+  @apply border-r-0 rounded-s-lg
+}
+  
+.container-form .password-eye-container {
+  @apply flex items-center bg-white border-zinc-400 border-2 rounded-e-lg cursor-pointer
+}
+  
+.container-form input[type="text"]:not(.password) {
+    @apply rounded-lg border-zinc-400 border-2
+}
+
+.error-message {
+  @apply text-red-800
+}

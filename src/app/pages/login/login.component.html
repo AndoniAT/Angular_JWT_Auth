@@ -1,0 +1,58 @@
+<div class="body-container">
+    <form class="loginContainer container-form"
+            (ngSubmit)="handleSubmit()"
+            [formGroup]="profileForm"
+            >
+            <div class="w-full text-center">
+                <span class="text-2xl font-semibold whitespace-nowrap">LOGIN</span>
+            </div>
+            <div class="w-full text-center">
+                <p [class]="error ? 'error-message' : 'offscreen'" aria-live="assertive">{{error}}</p>
+            </div>
+            
+            <!-- USERNAME -->
+            <div class="mb-5">
+                <label htmlFor="" class="block mb-2 text-sm font-medium">
+                    Username
+                </label>
+                <input
+                    class="h-10 pl-2" 
+                    type="text"
+                    placeholder="Your username"
+                    id="username"
+                    [required]="true"
+                    formControlName="username"
+                    />
+            </div>
+
+            <!-- PASSWORDS -->
+            <div class="mb-5">
+                <label htmlFor="password" class="block mb-2 text-sm font-medium">
+                    Password
+                </label>
+                <div class="flex">
+                    <input
+                        id="password"
+                        [type]="typePassword ? 'password' : 'text'"
+                        class="password"
+                        formControlName="password"
+                        required
+                    />
+                    <div
+                        (click)="setTypePassword()"
+                        class="password-eye-container">
+                        <ng-icon name="heroEye" class="size-6 mx-2 bg-white text-zinc-600"/>
+                        <!--<EyeSlashIcon class="size-6 mx-2 bg-white text-zinc-600"/>-->
+                    </div>
+            
+                </div>
+            </div>
+
+            <div class="flex items-start mb-5">
+                <a routerLink='/createAccount' class="text-blue-900 hover:underline dark:text-blue-500">I don't have an account</a>
+            </div>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Login
+            </button>
+    </form>
+</div>
