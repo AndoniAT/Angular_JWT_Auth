@@ -7,17 +7,18 @@
                     Created by Andoni ALONSO TORT
                 </span>
             </a>
-            <div *ngIf="false" class="flex items-center space-x-6 rtl:space-x-reverse">
-                <p (click)={signOut} class="text-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">
+            <div *ngIf="userConnected" class="flex items-center space-x-6 rtl:space-x-reverse">
+                <p (click)="signOut()" class="text-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">
                     Logout
                 </p>
                 <div class="hover:scale-110 cursor-pointer" (click)={goToProfileHandler}>
                     <div class="flex items-center">
-                        <p>Username</p>
+                        <p>{{userConnected.username}}</p>
+                        <ng-icon name="heroUserCircle" class="size-6 mx-2 text-zinc-200"/>
                     </div>
                 </div>
             </div>
-            <div *ngIf="true" class="flex items-center space-x-6 rtl:space-x-reverse">
+            <div *ngIf="!userConnected" class="flex items-center space-x-6 rtl:space-x-reverse">
                 <div>
                     <a routerLink='/login' class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
                 </div>

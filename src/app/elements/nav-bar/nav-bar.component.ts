@@ -1,31 +1,40 @@
 import { Component } from '@angular/core';
-import { AccesTokenDecodedType } from '../../interfaces/auth';
-import { RouterLink } from '@angular/router';
+import { AuthUserType } from '../../interfaces/auth';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth/auth.service';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroUserCircle } from '@ng-icons/heroicons/outline';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, NgIcon],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  styleUrl: './nav-bar.component.css',
+  viewProviders: [provideIcons({ heroUserCircle })],
 })
 export class NavBarComponent {
-  decoded : AccesTokenDecodedType | { user: {} } = this.decodeUser();
-  //userConnected = this.decoded?.user;
-  userConnected = this.decoded?.user;
-
-  //isAdmin = this.userConnected?.roles.includes( ROLES.admin )
+  userConnected : AuthUserType | undefined =  undefined;
   isAdmin = false;
 
+  constructor( readonly authService: AuthService, readonly router: Router ) {
+    this.userConnected = this.authService.getUserLogged();
+    this.isAdmin = this.userConnected?.roles.includes( AuthService.ROLES.admin ) || false;
+  }
+
   signOut() {
-    console.log('Sign out');
+    this.authService.logout()
+    .subscribe({
+      next: ( data:any ) => {
+        this.router.navigateByUrl('/').then(() => {
+          location.replace( location.href ); // Replace current url by the same to revalidate
+        });
+      },
+      error: console.error
+    })
   }
 
   goToProfileHandler() {
     console.log('Go to profile')
-  }
-
-  decodeUser() {
-    return {user: {}}
   }
 }

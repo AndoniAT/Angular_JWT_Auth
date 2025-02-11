@@ -1,7 +1,9 @@
 export interface AccesTokenDecodedType {
-    user: {
-        username:string,
-        email:string,
-        roles:number[]
-    }
+    user: AuthUserType
+}
+
+export interface AuthUserType {
+    username:string,
+    email:string,
+    roles:number[]
 }

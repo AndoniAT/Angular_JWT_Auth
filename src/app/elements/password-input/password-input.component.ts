@@ -21,7 +21,6 @@ export class PasswordInputComponent {
 
   @Input() set password(pwd: PasswordInputType) {
     this._password = pwd;
-    console.log("check", this._password);
     this.errorClass = this._password?.err ? "error-message" : "offscreen";
     this.err = this._password?.err ?? this._password.errMsg ?? '';
   }
