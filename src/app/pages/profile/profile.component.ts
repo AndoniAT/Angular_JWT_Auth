@@ -84,9 +84,16 @@ export class ProfileComponent {
   }
 
   ngOnInit() {
-    let username = this.route.snapshot.paramMap.get( 'username' );
-    if( !username ) return;
+    // Detect changes in params to reload user
+    this.route.paramMap.subscribe( ( params:any ) => {
+      const username = params.get('username');
+      if ( username ) {
+        this.loadUser(username);
+      }
+    });
+  }
 
+  loadUser( username: string ) {
     this.userService.getUser( username )
     .subscribe( {
       next: ( user:UserType ) => {
@@ -273,10 +280,6 @@ export class ProfileComponent {
     return err;
   }
 
-  changeShowModal() {
-    /*this.modalVisible = !this.modalVisible;*/
-  }
-
   handleModalChange(event: any) {
     this.modalVisible = event;
   }
@@ -318,5 +321,26 @@ export class ProfileComponent {
       },
       error: console.error
     })
+  }
+
+  resetValues() {
+    this.imAdmin = false;
+    this.loading = true;
+
+    this.userDefault = null;
+    this.isAdmin = false;
+    this.isMe = false;
+
+    this.typePassword = true;
+    this.typeConfirmPassword = true;
+
+    this.modalVisible = false;
+  
+    this.showActionButtons = false;
+    this.editMode = false;
+    this.showSaveCancelButtons = false;
+    this.countReconnect = 6;
+
+    this.cleanErrors();
   }
 }

@@ -187,7 +187,6 @@
 <c-modal id="liveDemoModal" [visible]="modalVisible !== false" (visibleChange)="handleModalChange($event)">
     <c-modal-header>
       <h5 cModalTitle>Succeeded</h5>
-      <button (click)="changeShowModal()" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>Some sensitive user information have changed. You will be redirected to login page in... {{countReconnect}}</c-modal-body>
     <c-modal-footer>
