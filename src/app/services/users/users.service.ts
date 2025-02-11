@@ -16,4 +16,11 @@ export class UsersService {
           withCredentials: true
         } )
   }
+
+  deleteUser( id:string ){
+    return this.http.delete( `${environment.BACK_END_URL}users/${id}`, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true
+    } )
+  }
 }
