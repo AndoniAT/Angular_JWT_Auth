@@ -1,20 +1,19 @@
-import { Observable, from } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AccesTokenDecodedType, AuthUserType, RolesType } from '../../interfaces/auth';
 import { jwtDecode } from "jwt-decode";
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 export class AuthService {
 
-  constructor(private http: HttpClient) { 
+  constructor( private http: HttpClient ) { 
   }
 
   login( username:string, password:string ) : Observable<any> {
-    //debugger
     const user = {
       username,
       password
@@ -48,6 +47,17 @@ export class AuthService {
     if( !user ) return [];
 
     return user.roles;
+  }
+
+  refreshToken() {
+    return this.http.get(`${environment.BACK_END_URL}auth/token`, {
+      withCredentials: true
+    } ).pipe(
+      tap( ( res:any ) => {
+        let accessToken = res.accessToken;
+        localStorage.setItem('token', accessToken );
+      })
+    );
   }
 
   static readonly ROLES : RolesType= {

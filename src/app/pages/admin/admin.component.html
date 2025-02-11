@@ -1,3 +1,21 @@
 <div class="body-container">
-    <p>admin works!</p>
+    <h1>hola</h1>
+   <table *ngIf="users.length > 0">
+        <thead>
+            <th>USERNAME</th>
+            <th>EMAIL</th>
+            <th>FIRSTNAME</th>
+            <th>LASTNAME</th>
+            <th>ACTIONS</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; index as i;">
+                <th>{{user?.username}}</th>
+                <th>{{user?.email}}</th>
+                <th>{{user?.firstname}}</th>
+                <th>{{user?.lastname}}</th>
+                <th>update / delete</th>
+            </tr>
+        </tbody>
+   </table>
 </div>    
