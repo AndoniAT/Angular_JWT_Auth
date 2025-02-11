@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent {
   users : UserAdminActionsType[] = [];
+  error : string = "";
 
   constructor( readonly usersService: UsersService, readonly router: Router ) {
     usersService.getAllUsers()
@@ -40,7 +41,6 @@ export class AdminComponent {
 
   modifyUser( username:string|undefined ) {
     if( !username ) return;
-    console.log("Update :", username);
     this.router.navigateByUrl( `/profile/${username}` );
   }
 
@@ -52,7 +52,19 @@ export class AdminComponent {
       next: () => {
         this.users = this.users.filter( us => us._id != id );
       },
-      error: console.error
+      error: ( err:any ) => {
+        this.detectHttpErrors( err?.error?.message );
+      }
     })
+  }
+
+  detectHttpErrors( error:string|undefined ) {
+    if( error === undefined ) {
+      this.error = 'No server response';
+    }
+
+    if( typeof error === 'string' ) {
+      this.error = error;
+    }
   }
 }

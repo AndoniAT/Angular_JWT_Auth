@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .loginContainer {
-    @apply mt-[10%]
+    @apply mt-[20%] md:mt-[15%] lg:mt-[12%]
 }

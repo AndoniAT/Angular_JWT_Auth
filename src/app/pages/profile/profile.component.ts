@@ -73,7 +73,10 @@ export class ProfileComponent {
       CreateAccountAttributesType.confirmPassword
     ] as CreateAccountAttributesType[];
 
-  constructor(readonly userService: UsersService, readonly route: ActivatedRoute, readonly authService: AuthService, readonly router: Router
+  constructor(readonly userService: UsersService, 
+    readonly route: ActivatedRoute,
+    readonly authService: AuthService,
+    readonly router: Router
    ) {
   }
 
@@ -102,7 +105,26 @@ export class ProfileComponent {
   }
 
   deleteUser() {
-    
+    if( !this.userDefault ) return;
+
+    this.userService.deleteUser( this.userDefault.username )
+    .subscribe( {
+      next: () => {
+        if( this.isMe ) {
+          return this.signOut();
+        }
+
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          this.router.navigate( [ '/' ] );
+        }
+
+      },
+      error: ( err:any ) => {
+        this.detectHttpErrors( err?.error?.message );
+      }
+    } )
   }
 
   cancel() {

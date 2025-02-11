@@ -16,6 +16,6 @@ export class UsersComponent {
   @Input() errMsg : string = "";
 
   constructor() {
-    console.log('check users', this.users);
+    //console.log('check users', this.users);
   }
 }
