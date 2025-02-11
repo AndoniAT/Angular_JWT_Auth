@@ -33,4 +33,8 @@ export class NavBarComponent {
       error: console.error
     })
   }
+
+  goToProfile() {
+    
+  }
 }

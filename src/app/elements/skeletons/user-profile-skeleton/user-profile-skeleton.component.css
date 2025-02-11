@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes appearForm {
+  from { margin-left: -100%; }
+  to { margin-left: 0; }
+}
+
+.profile-page-container {
+    /*background-color: yellow;*/
+    @apply: block max-h-screen overflow-auto
+}
+
+.profileUserContainer {
+    justify-content: center;
+    @apply
+    flex bg-slate-300 w-full lg:w-5/12 min-h-screen py-10
+}
+
+.profileUserContainer label {
+    @apply block mb-2 text-sm font-medium dark:text-slate-800
+}
+
+.profileUserContainer .profileInfoContainter input {
+    @apply p-2 border-zinc-400 w-full 
+    border border-gray-500
+}
+  
+.profileUserContainer .profileInfoContainter {
+    @apply bg-slate-300 rounded-lg border-black h-fit w-full mx-auto p-2 h-5/6
+}
+
+.profileUserContainer.loading {
+    animation-name: appearForm;
+    animation-duration: 1s;
+    @apply h-dvh
+  }
+
+.profileUserContainer input {
+    @apply 
+    border border-gray-500 text-sm
+    focus:ring-blue-500 focus:border-blue-500
+    block w-full p-2.5
+    /* dark */
+    dark:border-gray-300
+    dark:text-slate-800
+    dark:focus:ring-blue-500 dark:focus:border-blue-500
+    dark:placeholder:text-slate-600
+}
+
+.profileUserContainer input:disabled {
+    @apply text-slate-500 dark:text-slate-700 dark:bg-gray-400
+}
+
+.profileUserContainer input[type="checkbox"] {
+    accent-color: rgb(67, 198, 67);
+    @apply w-20 h-10
+  }
+
+.profileUserContainer input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    @apply border-2 border-slate-800 p-3
+}
+
+.profileUserContainer input[type="checkbox"]:disabled {
+    background: rgb(138, 138, 138);
+    cursor: not-allowed;
+}
+
+.profileUserContainer input[type="checkbox"]:checked {
+    background: rgb(127, 244, 176);
+    position: relative;
+}
+
+.profileUserContainer input[type="checkbox"]:checked::after {
+    content: "✔️";
+    font-size: 1.3rem;
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Posts */
+
+.posts-container {
+    @apply w-full min-h-screen max-h-screen overflow-auto
+}

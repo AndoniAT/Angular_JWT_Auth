@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.posts-container {
+    @apply overflow-y-auto max-h-[60%]	
+}

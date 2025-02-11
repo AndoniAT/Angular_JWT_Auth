@@ -1,6 +1,7 @@
 <div class="body-container">
     <div class="block lg:flex profile-page-container">
-        <div [class]="'profileUserContainer ' + ( loading ? 'loading' : '' )">
+        <app-user-profile-skeleton *ngIf="loading" class="profileUserContainer loading"/> 
+        <div *ngIf="!loading" class="profileUserContainer">
             <div class="w-7/12 space-y-5 p-1 h-fit bg-slate-400 rounded-lg p-2" radius="lg">
                     <!-- GRAL ERROR -->
                     <div *ngIf="errMsg?.gral" tabIndex="-1" class="w-full text-center mb-3">

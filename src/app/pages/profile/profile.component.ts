@@ -19,10 +19,11 @@ import {
 } from '@coreui/angular';
 import { InteractionsComponent } from "../../elements/interactions/interactions.component";
 import { PostsComponent } from "../../elements/posts/posts.component";
+import { UserProfileSkeletonComponent } from "../../elements/skeletons/user-profile-skeleton/user-profile-skeleton.component";
 
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule, ReactiveFormsModule, NgIcon, ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, InteractionsComponent, PostsComponent],
+  imports: [CommonModule, ReactiveFormsModule, NgIcon, ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, InteractionsComponent, PostsComponent, UserProfileSkeletonComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
   viewProviders: [ provideIcons( { heroPencilSquare, heroTrash, heroEye } ) ],
@@ -100,7 +101,7 @@ export class ProfileComponent {
 
         setTimeout( () => {
           this.loading = false;
-        }, 2000 );
+        }, 3000 );
       },
       error: console.error
     } )
