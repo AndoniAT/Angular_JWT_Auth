@@ -181,3 +181,19 @@
   border-bottom-right-radius: var(--cui-modal-inner-border-radius);
   border-bottom-left-radius: var(--cui-modal-inner-border-radius);
 }
+
+.skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

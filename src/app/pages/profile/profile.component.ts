@@ -17,10 +17,12 @@ import {
   ModalTitleDirective,
   ThemeDirective
 } from '@coreui/angular';
+import { InteractionsComponent } from "../../elements/interactions/interactions.component";
+import { PostsComponent } from "../../elements/posts/posts.component";
 
 @Component({
   selector: 'app-profile',
-  imports: [ CommonModule, ReactiveFormsModule, NgIcon, ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent ],
+  imports: [CommonModule, ReactiveFormsModule, NgIcon, ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, InteractionsComponent, PostsComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
   viewProviders: [ provideIcons( { heroPencilSquare, heroTrash, heroEye } ) ],

@@ -174,7 +174,9 @@
         </div>
         <div class="block lg:w-7/12">
             <!-- Interactions sections -->
+             <app-interactions *ngIf="!isMe && !loading"/>
             <!-- Posts -->
+             <app-posts/>
         </div>
     </div>
 

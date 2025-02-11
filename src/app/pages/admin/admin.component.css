@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.admin-container {
+    @apply mt-[20%] md:mt-[15%] lg:mt-[12%]
+}
