@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth/auth.service';
   imports: [RouterLink, ReactiveFormsModule, NgIcon],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  viewProviders: [provideIcons({ featherAirplay, heroEye })],
+  viewProviders: [ provideIcons( { featherAirplay, heroEye } ) ],
 })
 export class LoginComponent {
   
@@ -57,7 +57,7 @@ export class LoginComponent {
     } )
   }
 
-  setTypePassword() {
+  changeTypePassword() {
     this.typePassword = !this.typePassword;
   }
 }

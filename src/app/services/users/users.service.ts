@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { UserCreateType, UserType } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,13 @@ export class UsersService {
           headers: { "Content-Type": "application/json" },
           withCredentials: true
         } )
+  }
+
+  createUser( user:UserCreateType ) {
+    return this.http.post( `${environment.BACK_END_URL}users`, user, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true
+    } );
   }
 
   deleteUser( id:string ){

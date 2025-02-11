@@ -1,3 +1,148 @@
 <div class="body-container">
-    <p>create-account works!</p>
+    <form class="loginContainer container-form"
+    (ngSubmit)="createAccount()"
+    [formGroup]="profileForm">
+        <div class="w-full text-center mb-3">
+            <span class="text-2xl font-semibold whitespace-nowrap">CREATE ACCOUNT</span>
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.gral ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.gral}}</p>
+        </div>
+
+        <!-- USERNAME -->
+        <div class="mb-5">
+            <label htmlFor="" class="block mb-2 text-sm font-medium">
+                Username
+            </label>
+            <input
+                class="h-10 pl-2" 
+                type="text"
+                placeholder="Your username"
+                id="username"
+                [required]="true"
+                formControlName="username"
+                />
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.username ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.username}}</p>
+        </div>
+
+        <!-- FIRSTNAME -->
+        <div class="mb-5">
+            <label htmlFor="" class="block mb-2 text-sm font-medium">
+                Firstname
+            </label>
+            <input
+                class="h-10 pl-2" 
+                type="text"
+                placeholder="Your firstname"
+                id="firstname"
+                formControlName="firstname"
+                required
+                />
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.firstname ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.firstname}}</p>
+        </div>
+
+        <!-- LASTNAME -->
+        <div class="mb-5">
+            <label htmlFor="" class="block mb-2 text-sm font-medium">
+                Lastname
+            </label>
+            <input
+                class="h-10 pl-2" 
+                type="text"
+                placeholder="Your lastname"
+                id="lastname"
+                [required]="true"
+                formControlName="lastname"
+                />
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.lastname ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.lastname}}</p>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="mb-5">
+            <label htmlFor="" class="block mb-2 text-sm font-medium">
+                Email
+            </label>
+            <input
+                class="h-10 pl-2" 
+                type="text"
+                placeholder="Your email"
+                id="email"
+                [required]="true"
+                formControlName="email"
+                />
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.email ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.email}}</p>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="mb-5">
+            <label htmlFor="password" class="block mb-2 text-sm font-medium">
+                Password
+            </label>
+            <div class="flex">
+                <input
+                    id="password"
+                    [type]="typePassword ? 'password' : 'text'"
+                    class="password"
+                    formControlName="password"
+                    required
+                />
+                <div
+                    (click)="changeTypePassword()"
+                    class="password-eye-container">
+                    <ng-icon name="heroEye" class="size-6 mx-2 bg-white text-zinc-600"/>
+                    <!--<EyeSlashIcon class="size-6 mx-2 bg-white text-zinc-600"/>-->
+                </div>
+        
+            </div>
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.password ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.password}}</p>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="mb-5">
+            <label htmlFor="confirmPassword" class="block mb-2 text-sm font-medium">
+                Confirm Password
+            </label>
+            <div class="flex">
+                <input
+                    id="confirmPassword"
+                    [type]="typeConfirmPassword ? 'password' : 'text'"
+                    class="password"
+                    formControlName="confirmPassword"
+                    required
+                />
+                <div
+                    (click)="changeTypeConfirmPassword()"
+                    class="password-eye-container">
+                    <ng-icon name="heroEye" class="size-6 mx-2 bg-white text-zinc-600"/>
+                </div>
+            </div>
+        </div>
+        <div tabIndex={-1} class="w-full text-center mb-3">
+            <p [class]="errMsg.confirmPassword ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.confirmPassword}}</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-start mb-5">
+            <a routerLink='/login' class="text-blue-900 hover:underline dark:text-blue-500">I have an account</a>
+        </div>
+
+        <div *ngIf="successMsg" class="w-full text-center mb-3">
+            <p [class]="successMsg ? 'success-message' : 'offscreen'" aria-live="assertive">{{successMsg}}</p>
+        </div>
+        
+        <button *ngIf="successMsg.length === 0" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Create Account
+        </button>
+        
+    </form>
 </div>

@@ -19,3 +19,21 @@ export interface UserAdminActionsType extends UserType {
     modify: () => void,
     delete: () => void
 }
+
+export enum CreateAccountAttributesType {
+    username = "username",
+    firstname = "firstname",
+    lastname = "lastname",
+    email = "email",
+    password = "password",
+    confirmPassword = "confirmPassword"
+}
+
+export interface UserCreateType {
+    username: string,
+    firstname: string,
+    lastname: string,
+    email: string,
+    password: string,
+    confirmPassword:string
+}
