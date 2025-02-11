@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#users-table {
+    @apply  
+        w-full text-sm text-left rtl:text-right text-gray-500
+        border-slate-400
+        rounded-lg
+        overflow-hidden
+}
+
+#users-table tr {
+    @apply w-full
+}
+
+#users-table thead {
+    @apply bg-slate-500 text-slate-300
+}
+
+#users-table tbody tr {
+    @apply 
+        odd:bg-slate-300
+        even:bg-slate-200
+}

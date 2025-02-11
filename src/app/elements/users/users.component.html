@@ -1,0 +1,48 @@
+<div class="w-full text-center">
+    <p  [class]="errMsg ? 'error-message' : 'offscreen'" aria-live="assertive">{{errMsg}}</p>
+</div>
+<div class="w-9/12 my-0 mx-auto relative overflow-x-auto shadow-md sm:rounded-lg bg-slate-500">
+    <table *ngIf="users.length > 0"
+        id="users-table">
+        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                        Username
+                </th>
+                <th scope="col" class="px-6 py-3">
+                        Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                        Firstname
+                </th>
+                <th scope="col" class="px-6 py-3">
+                        Lastname
+                </th>
+                <th scope="col" class="px-6 py-3">
+                        Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; index as i;" class="border-b">
+                <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {{user?.username}}
+                </td>
+                <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {{user?.email}}
+                </td>
+                <td className="px-6 py-4">
+                    {{user?.firstname}}
+                </td>
+                <td className="px-6 py-4">
+                    {{user?.lastname}}
+                </td>
+                <td className="px-6 py-4 flex">
+                    <ng-icon *ngIf="user._id" name="heroPencilSquare" class="size-6 mx-2 cursor-pointer hover:scale-125" (click)="user.modify()"/>
+                    <ng-icon *ngIf="user._id" name="heroTrash" class="size-6 text-red-500 mx-2 cursor-pointer hover:scale-125" (click)="user.delete()"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

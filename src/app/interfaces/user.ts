@@ -14,3 +14,8 @@ export interface UserType {
     password?: string,
     confirmPassword?: string
 }
+
+export interface UserAdminActionsType extends UserType {
+    modify: () => void,
+    delete: () => void
+}

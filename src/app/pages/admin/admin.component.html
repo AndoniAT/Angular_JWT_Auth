@@ -1,21 +1,11 @@
 <div class="body-container">
-    <h1>hola</h1>
-   <table *ngIf="users.length > 0">
-        <thead>
-            <th>USERNAME</th>
-            <th>EMAIL</th>
-            <th>FIRSTNAME</th>
-            <th>LASTNAME</th>
-            <th>ACTIONS</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users; index as i;">
-                <th>{{user?.username}}</th>
-                <th>{{user?.email}}</th>
-                <th>{{user?.firstname}}</th>
-                <th>{{user?.lastname}}</th>
-                <th>update / delete</th>
-            </tr>
-        </tbody>
-   </table>
+    <section class="admin-container">
+        <h1 class="text-center text-2xl mt-5 font-bold">Admins Page</h1>
+            <br />
+            <div class="users-container">
+                <h2 class="text-center text-lg">Users List</h2>
+                <app-users [users]="users"/>
+            </div>
+            <br />
+    </section>
 </div>    
