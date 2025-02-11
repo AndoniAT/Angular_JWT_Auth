@@ -7,3 +7,8 @@ export interface AuthUserType {
     email:string,
     roles:number[]
 }
+
+export interface RolesType {
+    admin: number,
+    user: number
+}

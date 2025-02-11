@@ -46,8 +46,9 @@ export class LoginComponent {
         });
       },
       error: ( err:any ) => {
+        console.log("Check error", err);
         const message = err?.error?.message ?? "Login failed";
-        
+        console.log('message', message);
         if( !err.error ) {
             this.error = "No server response";
             return;

@@ -2,7 +2,7 @@ import { Observable, from } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { AccesTokenDecodedType, AuthUserType } from '../../interfaces/auth';
+import { AccesTokenDecodedType, AuthUserType, RolesType } from '../../interfaces/auth';
 import { jwtDecode } from "jwt-decode";
 
 @Injectable({
@@ -43,7 +43,14 @@ export class AuthService {
     return user;
   }
 
-  static ROLES = {
+  getSessionRoles() {
+    const user = this.getUserLogged();
+    if( !user ) return [];
+
+    return user.roles;
+  }
+
+  static readonly ROLES : RolesType= {
     admin: 1000,
     user : 2000
   };

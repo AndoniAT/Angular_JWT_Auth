@@ -5,6 +5,9 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { AdminComponent } from './pages/admin/admin.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { AuthService } from './services/auth/auth.service';
+import { hasRoleGuard, isNotConnected } from './has-role.guard';
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
     {
@@ -14,17 +17,23 @@ export const routes: Routes = [
     },
     {
         path: 'login',
+        canActivate: [ isNotConnected ],
         component: LoginComponent,
         title: 'Login'
     },
     {
         path: 'createAccount',
+        canActivate: [ isNotConnected ],
         component: CreateAccountComponent,
         title: 'Create Account'
     },
     {
         path: 'admin',
         component: AdminComponent,
+        canActivate: [ hasRoleGuard ],
+        data: {
+            roles: [ AuthService.ROLES.admin ]
+        },
         title: 'Admin Page'
     },
     {
@@ -36,5 +45,10 @@ export const routes: Routes = [
         path: 'contact',
         component: ContactComponent,
         title: 'Contact'
+    },
+    {
+        path: 'unauthorized',
+        component: UnauthorizedComponent,
+        title: 'Unauthorized'
     }
 ];
