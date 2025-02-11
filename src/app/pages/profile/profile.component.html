@@ -1,0 +1,192 @@
+<div class="body-container">
+    <div class="block lg:flex profile-page-container">
+        <div [class]="'profileUserContainer ' + ( loading ? 'loading' : '' )">
+            <div class="w-7/12 space-y-5 p-1 h-fit bg-slate-400 rounded-lg p-2" radius="lg">
+                    <!-- GRAL ERROR -->
+                    <div *ngIf="errMsg?.gral" tabIndex="-1" class="w-full text-center mb-3">
+                        <p class="errmsg error-message" aria-live="assertive">{{errMsg.gral}}</p>
+                    </div>
+
+                    <!-- FORM -->
+                    <form class="profileInfoContainter container-form"
+                    (ngSubmit)="save()"
+                    [formGroup]="profileForm">
+                        <!-- USERNAME -->
+                        <div class="mb-5">
+                            <label htmlFor="" class="block mb-2 text-sm font-medium">
+                                Username
+                            </label>
+                            <input
+                                class="h-10 pl-2" 
+                                type="text"
+                                placeholder="Your username"
+                                id="username"
+                                formControlName="username"
+                                />
+                        </div>
+                        <div tabIndex={-1} class="w-full text-center mb-3">
+                            <p [class]="errMsg.username ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.username}}</p>
+                        </div>
+
+                        <!-- FIRSTNAME -->
+                        <div class="mb-5">
+                            <label htmlFor="firstname" class="block mb-2 text-sm font-medium">
+                                Firstname
+                            </label>
+                            <input
+                                class="h-10 pl-2" 
+                                type="text"
+                                placeholder="Your firstname"
+                                id="firstname"
+                                formControlName="firstname"
+                                />
+                        </div>
+                        <div tabIndex={-1} class="w-full text-center mb-3">
+                            <p [class]="errMsg.firstname ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.firstname}}</p>
+                        </div>
+
+                        <!-- LASTNAME -->
+                        <div class="mb-5">
+                            <label htmlFor="lastname" class="block mb-2 text-sm font-medium">
+                                LASTNAME
+                            </label>
+                            <input
+                                class="h-10 pl-2" 
+                                type="text"
+                                placeholder="Your lastname"
+                                id="lastname"
+                                formControlName="lastname"
+                                />
+                        </div>
+                        <div tabIndex={-1} class="w-full text-center mb-3">
+                            <p [class]="errMsg.lastname ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.lastname}}</p>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="mb-5">
+                            <label htmlFor="email" class="block mb-2 text-sm font-medium">
+                                EMAIL
+                            </label>
+                            <input
+                                class="h-10 pl-2" 
+                                type="text"
+                                placeholder="Your email"
+                                id="email"
+                                formControlName="email"
+                                />
+                        </div>
+                        <div tabIndex={-1} class="w-full text-center mb-3">
+                            <p [class]="errMsg.email ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.email}}</p>
+                        </div>
+
+                         <!-- PASSWORD -->
+                        <div class="mb-5" *ngIf="editMode">
+                            <label htmlFor="password" class="block mb-2 text-sm font-medium">
+                                Password
+                            </label>
+                            <div class="flex">
+                                <input
+                                    id="password"
+                                    [type]="typePassword ? 'password' : 'text'"
+                                    class="password"
+                                    formControlName="password"
+                                />
+                                <div
+                                    (click)="changeTypePassword()"
+                                    class="password-eye-container">
+                                    <ng-icon name="heroEye" class="size-6 mx-2 bg-white text-zinc-600"/>
+                                </div>
+                        
+                            </div>
+                        </div>
+                        <div tabIndex={-1} class="w-full text-center mb-3">
+                            <p [class]="errMsg.password ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.password}}</p>
+                        </div>
+
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="mb-5" *ngIf="editMode">
+                            <label htmlFor="confirmPassword" class="block mb-2 text-sm font-medium">
+                                Confirm Password
+                            </label>
+                            <div class="flex">
+                                <input
+                                    id="confirmPassword"
+                                    [type]="typeConfirmPassword ? 'password' : 'text'"
+                                    class="password"
+                                    formControlName="confirmPassword"
+                                />
+                                <div
+                                    (click)="changeTypeConfirmPassword()"
+                                    class="password-eye-container">
+                                    <ng-icon name="heroEye" class="size-6 mx-2 bg-white text-zinc-600"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div tabIndex={-1} class="w-full text-center mb-3">
+                            <p [class]="errMsg.confirmPassword ? 'errmsg error-message' : 'offscreen'" aria-live="assertive">{{errMsg.confirmPassword}}</p>
+                        </div>
+
+                        <!-- IS ADMIN -->
+                        <div class="flex items-center mb-5 mt-4" *ngIf="imAdmin">
+                            <div class="flex items-center h-10 w-10">
+                                <input
+                                    id="admin" type="checkbox"
+                                    formControlName="admin"
+                                />
+                            </div>
+                            <label htmlFor="admin" 
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-black">
+                                Admin
+                            </label>
+                        </div>
+
+                        <!-- ACTIONS -->
+
+                        <div *ngIf="showActionButtons === true" class="px-6 py-4 flex justify-center;" style="justify-content: center">
+                            <div (click)="changeEditMode()" 
+                                class="text-center justify-items-center p-2 cursor-pointer hover:scale-110 hover:bg-slate-200 dark:text-slate-600">
+                                <ng-icon name="heroPencilSquare" class="size-6 mx-2 cursor-pointer hover:scale-125"/>
+                                <p>Modify User</p>
+                            </div>
+                            <div (click)="deleteUser()" 
+                                class="justify-items-center p-2 cursor-pointer hover:scale-110 hover:bg-slate-200 dark:text-slate-600">
+                                <ng-icon name="heroTrash" class="size-6 mx-2 cursor-pointer hover:scale-125 text-red-500"/>
+                                <p>Delete User</p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="showActionButtons !== true && showSaveCancelButtons === true" class="px-6 py-4 flex justify-center;" style="justify-content: center">
+                            <div class="button-action-container text-center">
+                                <button
+                                    (click)="cancel()"
+                                    class="red-btn text-white font-bold py-2 px-4 rounded m-3">
+                                Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    class="blue-btn text-white font-bold py-2 px-4 rounded m-3">
+                                Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+        <div class="block lg:w-7/12">
+            <!-- Interactions sections -->
+            <!-- Posts -->
+        </div>
+    </div>
+
+</div>
+<!-- MODAL -->
+
+<c-modal id="liveDemoModal" [visible]="modalVisible !== false" (visibleChange)="handleModalChange($event)">
+    <c-modal-header>
+      <h5 cModalTitle>Succeeded</h5>
+      <button (click)="changeShowModal()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>Some sensitive user information have changed. You will be redirected to login page in... {{countReconnect}}</c-modal-body>
+    <c-modal-footer>
+    </c-modal-footer>
+  </c-modal>

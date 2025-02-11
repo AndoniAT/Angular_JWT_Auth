@@ -33,8 +33,4 @@ export class NavBarComponent {
       error: console.error
     })
   }
-
-  goToProfileHandler() {
-    console.log('Go to profile')
-  }
 }

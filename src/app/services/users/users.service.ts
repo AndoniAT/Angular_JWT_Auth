@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { UserCreateType, UserType } from '../../interfaces/user';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor( private http: HttpClient ) { 
+  constructor( readonly http: HttpClient, readonly authService: AuthService ) {
   }
 
   getAllUsers() {
@@ -18,8 +19,22 @@ export class UsersService {
         } )
   }
 
+  getUser( username:string ) {
+    return this.http.get( `${environment.BACK_END_URL}users/${username}`, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true
+    } )
+  }
+
   createUser( user:UserCreateType ) {
     return this.http.post( `${environment.BACK_END_URL}users`, user, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true
+    } );
+  }
+
+  updateUser( username:string, user:UserType ) {
+    return this.http.put( `${environment.BACK_END_URL}users/${username}`, user, {
       headers: { "Content-Type": "application/json" },
       withCredentials: true
     } );
@@ -30,5 +45,9 @@ export class UsersService {
       headers: { "Content-Type": "application/json" },
       withCredentials: true
     } )
+  }
+
+  isAdmin( roles:number[] ) {
+    return roles.includes( AuthService.ROLES.admin );
   }
 }

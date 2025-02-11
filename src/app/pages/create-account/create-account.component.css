@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.loginContainer {
+    @apply mt-[10%]
+}

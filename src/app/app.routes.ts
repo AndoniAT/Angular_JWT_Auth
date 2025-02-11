@@ -8,6 +8,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AuthService } from './services/auth/auth.service';
 import { hasRoleGuard, isNotConnected } from './has-role.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,15 @@ export const routes: Routes = [
         path: 'about',
         component: AboutComponent,
         title: 'About'
+    },
+    {
+        path: 'profile/:username',
+        component: ProfileComponent,
+        canActivate: [ hasRoleGuard ],
+        data: {
+            roles: [ AuthService.ROLES.admin, AuthService.ROLES.user ]
+        },
+        title: 'Profile'
     },
     {
         path: 'contact',

@@ -60,7 +60,17 @@ export class AuthService {
     );
   }
 
-  static readonly ROLES : RolesType= {
+  isMe( username:string ) {
+    const user = this.getUserLogged();
+    return user.email == username || user.username == username;
+  }
+
+  imAdmin() {
+    const user = this.getUserLogged();
+    return user.roles.includes( AuthService.ROLES.admin );
+  }
+
+  static readonly ROLES : RolesType = {
     admin: 1000,
     user : 2000
   };

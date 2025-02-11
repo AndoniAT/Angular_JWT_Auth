@@ -3,6 +3,7 @@ import { UsersService } from '../../services/users/users.service';
 import { CommonModule } from '@angular/common';
 import { UserAdminActionsType, UserType } from '../../interfaces/user';
 import { UsersComponent } from '../../elements/users/users.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -13,9 +14,9 @@ import { UsersComponent } from '../../elements/users/users.component';
 export class AdminComponent {
   users : UserAdminActionsType[] = [];
 
-  constructor(readonly usersService: UsersService) {
+  constructor( readonly usersService: UsersService, readonly router: Router ) {
     usersService.getAllUsers()
-    .subscribe({
+    .subscribe( {
       next: ( data:UserType[] ) => {
         if( data.length === 0 ) {
           return;
@@ -24,12 +25,12 @@ export class AdminComponent {
         let _data = data.map( ( user:UserType ) => {
           let us = {
             ...user,
-            modify: () => this.modifyUser( user._id ),
+            modify: () => this.modifyUser( user.username ),
             delete: () => this.deleteUser( user._id )
           } as UserAdminActionsType;
 
           return us;
-        });
+        } );
 
         this.users = _data;
       },
@@ -37,9 +38,10 @@ export class AdminComponent {
     })
   }
 
-  modifyUser( id:string|undefined ) {
-    if( !id ) return;
-    console.log("Update :", id);
+  modifyUser( username:string|undefined ) {
+    if( !username ) return;
+    console.log("Update :", username);
+    this.router.navigateByUrl( `/profile/${username}` );
   }
 
   deleteUser( id:string|undefined ) {

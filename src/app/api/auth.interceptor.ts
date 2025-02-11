@@ -55,10 +55,10 @@ export class AuthInterceptor implements HttpInterceptor {
         }),
         catchError( ( err ) => {
           this.isRefreshing = false;
-          this.authService.logout();
+          /*this.authService.logout();
           this.router.navigateByUrl( '/' ).then(() => {
             location.replace( location.href ); // Replace current url by the same to revalidate
-          });
+          });*/
           return throwError( () => err );
         } )
       );

@@ -11,12 +11,14 @@
                 <p (click)="signOut()" class="text-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">
                     Logout
                 </p>
-                <div class="hover:scale-110 cursor-pointer" (click)={goToProfileHandler}>
-                    <div class="flex items-center">
-                        <p>{{userConnected.username}}</p>
-                        <ng-icon name="heroUserCircle" class="size-6 mx-2 text-zinc-600 dark:text-zinc-200"/>
+                <a [routerLink]="'/profile/' + userConnected.username">
+                    <div class="hover:scale-110 cursor-pointer">
+                        <div class="flex items-center">
+                            <p>{{userConnected.username}}</p>
+                            <ng-icon name="heroUserCircle" class="size-6 mx-2 text-zinc-600 dark:text-zinc-200"/>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div *ngIf="!userConnected" class="flex items-center space-x-6 rtl:space-x-reverse">
                 <div>
