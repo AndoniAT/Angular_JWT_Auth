@@ -92,3 +92,8 @@
 .posts-container {
     @apply w-full min-h-screen max-h-screen overflow-auto
 }
+
+/* Modal */
+#reconnectModal {
+    @apply text-slate-200
+}
