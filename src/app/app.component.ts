@@ -9,4 +9,5 @@ import { NavBarComponent } from './elements/nav-bar/nav-bar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = 'jwt-project'
 }
