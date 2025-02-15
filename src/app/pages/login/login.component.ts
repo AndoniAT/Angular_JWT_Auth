@@ -23,7 +23,7 @@ export class LoginComponent {
     password: new FormControl('')
   });
 
-  constructor(private authService:AuthService, private router: Router) {
+  constructor(readonly authService:AuthService, readonly router: Router) {
 
   }
 

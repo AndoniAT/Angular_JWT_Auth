@@ -10,7 +10,7 @@ import { jwtDecode } from "jwt-decode";
 } )
 export class AuthService {
 
-  constructor( private http: HttpClient ) { 
+  constructor( readonly http: HttpClient ) { 
   }
 
   login( username:string, password:string ) : Observable<any> {

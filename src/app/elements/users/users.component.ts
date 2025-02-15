@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserAdminActionsType, UserType } from '../../interfaces/user';
+import { UserAdminActionsType } from '../../interfaces/user';
 import { CommonModule } from '@angular/common';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroPencilSquare, heroTrash } from '@ng-icons/heroicons/outline';
@@ -12,7 +12,7 @@ import { heroPencilSquare, heroTrash } from '@ng-icons/heroicons/outline';
   viewProviders: [provideIcons({ heroPencilSquare, heroTrash })],
 })
 export class UsersComponent {
-  @Input() users !: UserAdminActionsType[];
+  @Input() users : UserAdminActionsType[] = [];
   @Input() errMsg : string = "";
 
   constructor() {

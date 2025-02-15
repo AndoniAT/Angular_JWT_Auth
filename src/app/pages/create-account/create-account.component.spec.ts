@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateAccountComponent } from './create-account.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 
 describe('CreateAccountComponent', () => {
   let component: CreateAccountComponent;
@@ -8,7 +10,8 @@ describe('CreateAccountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateAccountComponent]
+      imports: [CreateAccountComponent],
+      providers: [provideHttpClient(), provideRouter([])]
     })
     .compileComponents();
 
