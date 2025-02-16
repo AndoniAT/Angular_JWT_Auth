@@ -38,8 +38,8 @@
                     {{user?.lastname}}
                 </td>
                 <td className="px-6 py-4 flex">
-                    <ng-icon *ngIf="user._id" name="heroPencilSquare" class="size-6 mx-2 cursor-pointer hover:scale-125" (click)="user.modify()"/>
-                    <ng-icon *ngIf="user._id" name="heroTrash" class="size-6 text-red-500 mx-2 cursor-pointer hover:scale-125" (click)="user.delete()"/>
+                    <ng-icon *ngIf="user._id" name="heroPencilSquare" class="modifyUser size-6 mx-2 cursor-pointer hover:scale-125" (click)="user.modify()"/>
+                    <ng-icon *ngIf="user._id" name="heroTrash" class="deleteUser size-6 text-red-500 mx-2 cursor-pointer hover:scale-125" (click)="user.delete()"/>
                 </td>
             </tr>
         </tbody>

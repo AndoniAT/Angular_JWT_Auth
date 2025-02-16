@@ -46,7 +46,6 @@ export class AdminComponent {
 
   deleteUser( id:string|undefined ) {
     if( !id ) return;
-
     this.usersService.deleteUser( id )
     .subscribe({
       next: () => {
